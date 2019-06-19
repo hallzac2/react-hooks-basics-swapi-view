@@ -10,7 +10,7 @@ const ids = ['', ...Array(88).keys()].map(id => `${id}`)
 // We can create our own custom hooks for various things
 // Tons of hooks exist for React features and for 3rd party things like routing and redux
 // No need to worry about this at all. Either arrow functions or regular functions can be used.
-//    NOTE: Be very deliberate about when to use an arrow function vs when not too as it will bite you
+//    NOTE: Be very deliberate about when to use an arrow function vs when not to as it will bite you
 export default function() {
   // Default the state we want to use
   // Must always be ran in the same order and should never be behind if statements!!!
@@ -39,7 +39,6 @@ export default function() {
   }, [selectedId])
 
   // Render as normal
-  // https://reactjs.org/blog/2017/11/28/react-v16.2.0-fragment-support.html
   return (
     <>
       <h1>Hooks Swapi Viewer</h1>

@@ -43,8 +43,6 @@ export default class SwapiViewer extends React.Component {
   render() {
     // Destructure to avoid tons of this.state.{insert_prop_here}!
     const { selectedId, person } = this.state
-
-    // https://reactjs.org/blog/2017/11/28/react-v16.2.0-fragment-support.html
     return (
       <>
         <h1>Swapi Viewer</h1>
