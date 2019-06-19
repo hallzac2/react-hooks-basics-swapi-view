@@ -1,7 +1,7 @@
 import React from 'react'
 import Select from './select'
 
-// Who knows how JS inheritance actually works? This is syntactic sugar for prototypal inheritance!
+// This is syntactic sugar for prototypal inheritance!
 export default class SwapiViewer extends React.Component {
 
   constructor(props) {
@@ -17,7 +17,7 @@ export default class SwapiViewer extends React.Component {
       person: null
     }
 
-    // Don't forget to bind correctly AND reassign the function OR use an arrow function as a class property! Isn't THAT confusing?
+    // Don't forget to bind correctly and reassign the function or use an arrow function as a class property!
     // Fun Fact: My number 1 React gotcha is forgetting to reassign the function to be the bound value, not missing the bind to this.
     this.setSelectedId = this.setSelectedId.bind(this)
   }

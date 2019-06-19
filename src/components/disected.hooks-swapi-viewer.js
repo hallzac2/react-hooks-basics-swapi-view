@@ -6,10 +6,10 @@ const ids = ['', ...Array(88).keys()].map(id => `${id}`)
 
 // Hooks pull out a ton of complexity for us and allow the React devs to optimize our components under the hood
 // Hook convention is that the name always starts with "use" 
-// Hooks are never to be used inside of class components, DON"T BE THAT GUY ON REDDIT!!!!!!!!!!!!!!!!!!!
+// Hooks are never to be used inside of class components, only in function components
 // We can create our own custom hooks for various things
 // Tons of hooks exist for React features and for 3rd party things like routing and redux
-// No need to worry about this at all. Either arrow functions or regular functions can be used.
+// No need to worry about js 'this' at all. Either arrow functions or regular functions can be used.
 //    NOTE: Be very deliberate about when to use an arrow function vs when not to as it will bite you
 export default function() {
   // Default the state we want to use
@@ -34,7 +34,7 @@ export default function() {
         .then(person => setSelectedPerson(person)) // Freely update this without worrying, even if the new value is dependent on the old value
 
       // Effects can return a function to tell React how to cleanup this effect on destroy. Cancel setTimeouts, unsubscribe from observables, etc.
-      return () => { /* Optional effect clean up here */ }
+      // return () => { /* Optional effect clean up here */ }
     }
   }, [selectedId])
 
