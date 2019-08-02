@@ -1,7 +1,15 @@
 {
   "name": "react-hooks-basics-swapi-view",
   "version": "0.1.0",
-  "private": true,
+  "author": {
+    "name": "Zackary Hall",
+    "email": "hallzac2@isu.edu"
+  },
+  "license": "AGPL-3.0-only",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hallzac2/zboardz.git"
+  },
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
