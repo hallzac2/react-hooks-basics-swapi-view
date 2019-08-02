@@ -1,6 +1,8 @@
 # react-hooks-basics-swapi-view
 A small app to highlight the differences between class components and function components using hooks
 
+![React Hooks Spongebob Reference](https://github.com/hallzac2/react-hooks-basics-swapi-view/blob/master/patrick-hooks.png)
+
 ### Problems in React
 * It’s hard to reuse stateful logic between components 
 * Complex components become hard to understand
