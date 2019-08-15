@@ -1,12 +1,12 @@
 import React from 'react'
-import SwapiViewer from './components/class-swapi-viewer'
-import HooksSwapiViewer from './components/hooks-swapi-viewer'
+import { ClassSwapiViewer } from './components/ClassSwapiViewer'
+import HooksSwapiViewer from './components/HooksSwapiViewer'
+import './App.css'
 
 function App() {
   return (
-    <div>
-      <SwapiViewer/>
-      <hr/>
+    <div class="flex-container">
+      <ClassSwapiViewer/>
       <HooksSwapiViewer/>
     </div>
   );

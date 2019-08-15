@@ -1,7 +1,8 @@
 import React from 'react'
-import Select from './select'
+import Select from './Select'
+import './swapi-viewer.css'
 
-export default class SwapiViewer extends React.Component {
+export class ClassSwapiViewer extends React.Component {
 
   constructor(props) {
     super(props)
@@ -11,7 +12,8 @@ export default class SwapiViewer extends React.Component {
 
     this.state = {
       selectedId: '',
-      person: null
+      person: null,
+      isLoading: false
     }
 
     this.setSelectedId = this.setSelectedId.bind(this)
@@ -21,10 +23,13 @@ export default class SwapiViewer extends React.Component {
     const { selectedId } = this.state
 
     if (this.state.selectedId && prevState.selectedId !== selectedId) {
+      this.setState({ isLoading: true })
       const url = `https://swapi.co/api/people/${selectedId}/`
+      
       fetch(url, this.fetchConfig)
         .then(res => res.json())
         .then(person => this.setState({ person }))
+        .finally(() => this.setState({ isLoading: false }))
     }
   }
 
@@ -33,15 +38,17 @@ export default class SwapiViewer extends React.Component {
   }
   
   render() {
-    const { selectedId, person } = this.state
+    const { selectedId, person, isLoading } = this.state
 
     return (
-      <>
+      <div className="swapi-card">
         <h1>Swapi Viewer</h1>
         <label>Pick a character id:</label>
         <Select options={this.ids} selectedValue={selectedId} onChange={this.setSelectedId} />
-        <pre>{JSON.stringify(person, null, 2)}</pre>
-      </>
+        <pre className="json-view">
+          {isLoading ? 'loading...' : JSON.stringify(person, null, 2)}
+        </pre>
+      </div>
     )
   }
 }

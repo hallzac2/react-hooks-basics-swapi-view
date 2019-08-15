@@ -1,8 +1,9 @@
 import React from 'react'
-import Select from './select'
+import Select from './Select'
+import './swapi-viewer.css'
 
 // This is syntactic sugar for prototypal inheritance!
-export default class SwapiViewer extends React.Component {
+export default class ClassSwapiViewer extends React.Component {
 
   constructor(props) {
     // Super them props! Don't forget it!
@@ -14,7 +15,8 @@ export default class SwapiViewer extends React.Component {
     // Default state here!
     this.state = {
       selectedId: '',
-      person: null
+      person: null,
+      isLoading: false
     }
 
     // Don't forget to bind correctly and reassign the function or use an arrow function as a class property!
@@ -27,10 +29,13 @@ export default class SwapiViewer extends React.Component {
 
     // Check to make sure the thing actually changed!
     if (this.state.selectedId && prevState.selectedId !== selectedId) {
+      this.setState({ isLoading: true })
       const url = `https://swapi.co/api/people/${selectedId}/`
+
       fetch(url, this.fetchConfig)
         .then(res => res.json())
         .then(person => this.setState({ person })) // If this depended on pervious state, gotta make sure to use a function param with setState instead!
+        .finally(() => this.setState({ isLoading: false }))
     }
   }
 
@@ -42,14 +47,17 @@ export default class SwapiViewer extends React.Component {
   
   render() {
     // Destructure to avoid tons of this.state.{insert_prop_here}!
-    const { selectedId, person } = this.state
+    const { selectedId, person, isLoading } = this.state
+
     return (
-      <>
+      <div className="swapi-card">
         <h1>Swapi Viewer</h1>
         <label>Pick a character id:</label>
         <Select options={this.ids} selectedValue={selectedId} onChange={this.setSelectedId} />
-        <pre>{JSON.stringify(person, null, 2) }</pre>
-      </>
+        <pre className="json-view">
+          {isLoading ? 'loading...' : JSON.stringify(person, null, 2)}
+        </pre>
+      </div>
     )
   }
 }
