@@ -16,8 +16,11 @@ A small app to highlight the differences between class components and function c
 ### Hooks Conventions
 * Only use them in function components.
 * Name always start with ’use’.
+* Hooks need to be called in the same order for every render because React relies on this. Do not call hooks conditionally!
+* Hooks should always be called at the top of our components.
 
 ### Other Benefits
+* We can write our own custom hooks! This allows us to share small pieces of logic easily.
 * React devs probably have access to optimizations in the framework that we don't (Other languages and frameworks do this, Java Streams for example).
 
 ### Finally...
@@ -28,3 +31,6 @@ A small app to highlight the differences between class components and function c
 ### References
 * https://reactjs.org/docs/hooks-intro.html
 * https://reactjs.org/docs/hooks-reference.html
+* https://reactjs.org/docs/hooks-rules.html
+* https://reactjs.org/docs/hooks-custom.html
+* https://frontarm.com/james-k-nelson/react-hooks-intuition/
